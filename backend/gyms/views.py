@@ -31,6 +31,13 @@ class ReviewDetail(APIView, IsAuthenticated):
 
 
 
+    def delete(self, request, review_id, format=None):
+        review = self.get_object(review_id)
+        review.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+
 class ReviewUpdate(APIView, IsAuthenticated):
      def put(self, request, review_id):
         review = Review.objects.get(id=review_id)
