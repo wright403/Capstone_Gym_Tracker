@@ -14,9 +14,9 @@ from rest_framework.decorators import api_view, permission_classes
 
 
 class ReviewList(APIView, AllowAny):
-    def get(self, request):
-        comment = Review.objects.all()
-        serializer = ReviewSerializer(comment, many=True)
+    def get(self, request, format=None):
+        review = Review.objects.all()
+        serializer = ReviewSerializer(review, many=True)
         return Response(serializer.data)
 
 

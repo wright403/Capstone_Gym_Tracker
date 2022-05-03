@@ -6,7 +6,7 @@ class ReviewSerializer(serializers.ModelSerializer):
     
     class Meta:
         model= Review
-        fields = ['id', 'user_id', 'text', 'likes', 'dislikes']
+        fields = ['id', 'review', 'user_id', 'likes', 'dislikes']
         depth = 1
 
 
