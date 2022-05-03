@@ -28,3 +28,46 @@ class ReviewDetail(APIView, IsAuthenticated):
             serializer.save(user=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+class ReviewUpdate(APIView, IsAuthenticated):
+     def put(self, request, review_id):
+        review = Review.objects.get(id=review_id)
+        serializer = ReviewSerializer(review, data=request.data)
+        if serializer.is_valid():
+            serializer.save(user=request.user)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+        
+class ReviewLike(APIView, IsAuthenticated):
+        def get_object(self, review_id):
+            try:
+                return Review.objects.get(id=review_id)
+            except Review.DoesNotExist:
+                raise Http404
+
+        def put(self, request, review_id):
+            review = self.get_object(review_id)
+            print(Review)
+            review.likes += 1
+            review.save()
+            serializer = ReviewSerializer(review)
+            return Response(serializer.data)
+
+
+class ReviewDislike(APIView, IsAuthenticated):
+        def get_object(self, review_id):
+            try:
+                return Review.objects.get(id=review_id)
+            except Review.DoesNotExist:
+                raise Http404
+
+        def put(self, request, review_id):
+            review = self.get_object(review_id)
+            print(Review)
+            review.dislikes += 1
+            review.save()
+            serializer = ReviewSerializer(review)
+            return Response(serializer.data)
