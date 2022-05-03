@@ -12,9 +12,19 @@ from rest_framework.decorators import api_view, permission_classes
 
 
 
-@permission_classes([AllowAny])
-class ReviewList(APIView):
+
+class ReviewList(APIView, AllowAny):
     def get(self, request):
         comment = Review.objects.all()
         serializer = ReviewSerializer(comment, many=True)
         return Response(serializer.data)
+
+
+class ReviewDetail(APIView, IsAuthenticated):
+
+    def post(self, request):
+        serializer = ReviewSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(user=request.user)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
