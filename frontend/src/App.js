@@ -15,9 +15,30 @@ import Footer from "./components/Footer/Footer";
 import PrivateRoute from "./utils/PrivateRoute";
 
 function App() {
+  const [search, setSearch] = useState();
+  const [startSearch, setStartSearch] = useState(true);
+  const [clickedgym, setClickedgym] = useState([]);
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   return (
     <div>
-      <Navbar />
+      <Navbar  search={search}
+        setStartSearch={setStartSearch}
+        setSearch={setSearch} />
+      
       <Routes>
         <Route
           path="/"
