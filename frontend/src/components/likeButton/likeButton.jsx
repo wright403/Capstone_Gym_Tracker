@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import useAuth from "../../hooks/useAuth";
+import UseAuth from "../../hooks/useAuth";
 import axios from "axios";
 
 
 const likeButton = (props) => {
-    const [user, token] = useAuth();
+    const [user, token] = UseAuth();
     
     const likeReview = async () => {
         try {
@@ -32,7 +32,7 @@ const likeButton = (props) => {
     
     
     return ( 
-        <div key={props.comment_id}>
+        <div key={props.review_id}>
       <button class="like-button" onClick={handleLike}></button>
       
     </div>

@@ -40,10 +40,10 @@ const SearchBar = (props) => {
                 onChange={(event) => props.setSearch(event.target.value)}
               />
               <button
-                className="button-holder"
+                className="btn btn-primary"
                 type="Submit"
-                style={{ cursor: "pointer" }}
-              >
+                
+              >Search
                 
               </button>
             </div>

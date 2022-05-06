@@ -1,6 +1,11 @@
 // General Imports
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
+import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import Places from "./components/Places/Places"
+
+
 
 // Pages Imports
 import HomePage from "./pages/HomePage/HomePage";
@@ -10,22 +15,47 @@ import RegisterPage from "./pages/RegisterPage/RegisterPage";
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
+import LikeButton from "./components/likeButton/LikeButton";
+import Map from "./components/Map/Map";
+
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
+import SearchBar from "./components/SearchBar/SearchBar";
+import DistanceMatrix from "./components/DistanceMatrix/DistanceMatrix";
+
+
 
 function App() {
   const [search, setSearch] = useState();
   const [startSearch, setStartSearch] = useState(true);
-  const [clickedgym, setClickedgym] = useState([]);
+  const [gymData, setgymData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [gymLocation, setGymLocation] = useState();
 
+  useEffect(()=>{
+    const fetchGyms = async () =>{
+      
+      // let response= await axios.get('https://maps.googleapis.com/maps/api/js?key=AIzaSyDhCIYabN6_q32jeqmG_0FSLsOvZ5jrwc0&libraries=places&callback=initMap')
+      // setgymData(response.data.results)
+      
+    }
+    // fetchGyms();
+  }, [])
+  
+  
+  
+  useEffect(() => {
+    // fetchlocations();
+  }, []);
   
   
   
   
-  
-  
-  
+  // async function fetchlocations(){
+  //   // let response = await axios.get('https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyCBVbodocWiw5pWiEARM5aiEITUspFy_Gw')
+  //   setGymLocation(response.data.results);
+  // }
   
   
   
@@ -35,16 +65,20 @@ function App() {
   
   return (
     <div>
-      <Navbar  search={search}
-        setStartSearch={setStartSearch}
-        setSearch={setSearch} />
+      <Navbar   />
       
+      <DistanceMatrix />
+      <Places  />
+      
+      
+     
       <Routes>
         <Route
           path="/"
           element={
             <PrivateRoute>
-              <HomePage />
+              <HomePage  />
+              
             </PrivateRoute>
           }
         />
