@@ -4,14 +4,8 @@ import App from "./App";
 import { AuthProvider } from "./context/AuthContext";
 import { BrowserRouter as Router } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {
-  Combobox,
-  ComboboxInput,
-  ComboboxPopover,
-  ComboboxList,
-  ComboboxOption,
-  ComboboxOptionText,
-} from "@reach/combobox";
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBVbodocWiw5pWiEARM5aiEITUspFy_Gw&libraries=places">
+    </script>
 
 ReactDOM.render(
   <React.StrictMode>
