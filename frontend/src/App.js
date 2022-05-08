@@ -7,13 +7,16 @@ import Places from "./components/Places/Places"
 
 
 
+
+
+
 // Pages Imports
 import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 
 // Component Imports
-import Navbar from "./components/NavBar/NavBar";
+// import Navbar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
 import LikeButton from "./components/likeButton/LikeButton";
 import Map from "./components/Map/Map";
@@ -23,6 +26,7 @@ import Map from "./components/Map/Map";
 import PrivateRoute from "./utils/PrivateRoute";
 import SearchBar from "./components/SearchBar/SearchBar";
 import DistanceMatrix from "./components/DistanceMatrix/DistanceMatrix";
+// import SomePlaces from "./components/SomePlaces/SomePlaces";
 
 
 
@@ -65,10 +69,12 @@ function App() {
   
   return (
     <div>
-      <Navbar   />
+      {/* <Navbar   /> */}
       
       <DistanceMatrix />
+      {/* <SomePlaces /> */}
       <Places  />
+      
       
       
      

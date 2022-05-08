@@ -5,10 +5,10 @@ import usePlacesAutocomplete, {
   getGeocode,
   getLatLng,
 } from "use-places-autocomplete";
-import NativeSelect from '@mui/material/NativeSelect';
 import Autocomplete from '@mui/material/Autocomplete';
-
-
+import "./Places.css";
+import { TextField } from '@mui/material';
+import { Stack } from '@mui/material';
 
 
 
@@ -68,39 +68,48 @@ const libraries = ["places"];
 
     
     
-    <><Search panTo={panTo} /><Locate panTo={panTo} /></>
-    
     
     
     
     return ( 
-      <div>
+      
+       
+    
+      
+       
+       
+       <div>
+        <Locate panTo={panTo} />
+        <Search panTo={panTo} />
+        
+        
+        
         <GoogleMap mapContainerStyle={mapContainerStyle}
           zoom={8}
           center={center}
           options={options}
-          onClick={onMapClick} 
+          onClick={onMapClick}
           onLoad={onMapLoad}
         >
           
           {markers.map((marker) => (
             <Marker
               key={marker.time.toISOString()}
-              position={{lat: marker.lat, lng: marker.lng}}
+              position={{ lat: marker.lat, lng: marker.lng }}
               onClick={() => {
-              setSelected(marker);
-            }}
-            />
-        ))};
-        {selected ? (<InfoWindow position={{lat: selected.lat, lng: selected.lng}} onCloseClick={() => {
-          setSelected(null);
-        }}>
-          <div>
-            <h2>Gym Location!</h2>
-          </div>
-        </InfoWindow>): null}
+                setSelected(marker);
+              } } />
+          ))};
+          {selected ? (<InfoWindow position={{ lat: selected.lat, lng: selected.lng }} onCloseClick={() => {
+            setSelected(null);
+          } }>
+            <div>
+              <h2>Gym Location!</h2>
+            </div>
+          </InfoWindow>) : null}
         </GoogleMap>
       </div>
+      
      );
   }
   
@@ -126,37 +135,63 @@ const libraries = ["places"];
          radius: 200 * 1000,
        },
      });
+     
+     
+     const handleInput = (e) => {
+      setValue(e.target.value);
+    };
+  
+    const handleSelect = async (address) => {
+      setValue(address, false);
+      clearSuggestions();
+       
+       
+     
+     
+     
+     
+     try {
+      const results = await getGeocode({address});
+      const {lat, lng} = getLatLng(results[0]);
+      panTo({lat, lng});
+    } catch (error) {
+      console.log(error);
+    }
+  }; 
+  
+     
+  
+  
+  
+  
+    
+     
+     
+     
+     
      return (
-       <div className='search'>
-      <Autocomplete onSelect={ async (address) =>{
-        setValue(address, false);
-        clearSuggestions();
-        
-        try {
-          const results = await getGeocode({address});
-          const {lat, lng} = await getLatLng(results[0]);
-          panTo({lat, lng});
-        } catch (error) {
-          console.log(error)
-        }
-        // console.log(address);
-      }}
-      >
-        <inputValue value={value} onChange={(e) => {
-          setValue(e.target.value);
-        }}
+      <div className='search'>
+        <form onSelect={handleSelect}>
+        <input
+        value={value}
+        onChange={handleInput}
         disabled={!ready}
-        placeholder="Enter an address"
+        placeholder="Search your location"
         />
-        <NativeSelect>
-          {status === "OK" && data.map((id, description) => (
-            <renderOption key={id} value={description} />
-          ))}
-        </NativeSelect>
-      </Autocomplete>
+        <li>
+        {status === "OK" &&
+              data.map(({ id, description }) => (
+                <option key={id} value={description} />
+              ))}
+        </li>
+      </form>
       </div>
      )
    }
+
+  
+
+    
   export default Places;
   
   
