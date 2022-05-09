@@ -20,12 +20,13 @@ import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import Footer from "./components/Footer/Footer";
 import LikeButton from "./components/likeButton/LikeButton";
 import Map from "./components/Map/Map";
+import Navbar from "./components/NavBar/NavBar";
 
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
 import SearchBar from "./components/SearchBar/SearchBar";
-import DistanceMatrix from "./components/DistanceMatrix/DistanceMatrix";
+import DistanceMatrix from "./pages/DisplayReviewPage/DistanceMatrix";
 // import SomePlaces from "./components/SomePlaces/SomePlaces";
 
 
@@ -69,11 +70,12 @@ function App() {
   
   return (
     <div>
-      {/* <Navbar   /> */}
       
-      <DistanceMatrix />
+      
+     
       {/* <SomePlaces /> */}
       <Places  />
+      <Navbar   />
       
       
       
@@ -90,6 +92,7 @@ function App() {
         />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/distance" element={<DistanceMatrix />}/>
       </Routes>
       <Footer />
     </div>

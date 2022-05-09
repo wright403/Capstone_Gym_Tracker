@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@chakra-ui/react": "^1.8.8",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@googlemaps/react-wrapper": "^1.1.32",
@@ -20,6 +21,7 @@
     "react-dom": "^17.0.2",
     "react-dropdown": "^1.10.0",
     "react-google-charts": "^4.0.0",
+    "react-icons": "^4.3.1",
     "react-places-autocomplete": "^7.3.0",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
