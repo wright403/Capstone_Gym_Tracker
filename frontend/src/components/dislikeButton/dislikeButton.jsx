@@ -3,7 +3,7 @@ import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 
 
-const disLikeButton = (props) => {
+const DisLikeButton = (props) => {
     const [user, token] = useAuth();
 
     const dislikereview = async () => {
@@ -36,4 +36,4 @@ const disLikeButton = (props) => {
      );
 }
  
-export default disLikeButton;
+export default DisLikeButton;

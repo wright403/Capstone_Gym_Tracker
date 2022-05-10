@@ -18,7 +18,7 @@ import RegisterPage from "./pages/RegisterPage/RegisterPage";
 // Component Imports
 // import Navbar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
-import LikeButton from "./components/likeButton/LikeButton";
+import LikeButton from "./components/LikeButton/LikeButton";
 import Map from "./components/Map/Map";
 import Navbar from "./components/NavBar/NavBar";
 
@@ -29,6 +29,10 @@ import SearchBar from "./components/SearchBar/SearchBar";
 import DistanceMatrix from "./pages/DisplayReviewPage/DistanceMatrix";
 import PlaceDetails from "./pages/PlaceDetails/PlaceDetails";
 import DisplayReviewPage from "./pages/DisplayReviewPage/DisplayReviewPage";
+import Places from "./components/Places/Places";
+import PostNewReview from "./components/postNewReview/PostNewReview";
+import ReviewForm from "./components/postNewReview/ReviewForm";
+import Reviews from "./components/postNewReview/Reviews";
 // import SomePlaces from "./components/SomePlaces/SomePlaces";
 
 
@@ -80,6 +84,9 @@ function App() {
       {/* <SomePlaces /> */}
       {/* <Places  /> */}
       <Navbar   />
+      {/* <PostNewReview /> */}
+      <Reviews />
+      <ReviewForm />
       
       
       
@@ -97,8 +104,9 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/distance" element={<DistanceMatrix />}/>
-        {/* <Route path="places" element={<PlaceDetails/>} /> */}
+         <Route path="places" element={<PlaceDetails/>} /> 
         <Route path="/reviewpage" element={<DisplayReviewPage />} />
+        <Route path ="/placesmap" element={<Places  />} />
       </Routes>
       <Footer />
     </div>

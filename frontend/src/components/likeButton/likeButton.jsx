@@ -3,7 +3,7 @@ import UseAuth from "../../hooks/useAuth";
 import axios from "axios";
 
 
-const likeButton = (props) => {
+const LikeButton = (props) => {
     const [user, token] = UseAuth();
     
     const likeReview = async () => {
@@ -39,4 +39,4 @@ const likeButton = (props) => {
      );
 }
  
-export default likeButton;
+export default LikeButton;

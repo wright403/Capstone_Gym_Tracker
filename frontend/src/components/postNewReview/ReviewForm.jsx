@@ -1,18 +1,10 @@
 import React, { useState } from 'react';
-const ReviewForm = (props) => ({
-  handleSubmit,
-  submitLabel,
-  hasCancelButton = false,
-  handleCancel,
-  initialText = "",
-}) => {
-  const [text, setText] = useState(initialText);
-  const isTextareaDisabled = text.length === 0;
-  const onSubmit = (event) => {
-    event.preventDefault();
-    handleSubmit(text);
-    setText("");
-  };
+const ReviewForm = ({ submitForm, text, handleChange }) => {
+  
+    const styles = {
+        padding: "25px",
+      };
+  
     
     
     
@@ -20,24 +12,14 @@ const ReviewForm = (props) => ({
     
     
     return ( 
-        <form onSubmit={onSubmit}>
-      <textarea
-        className="review-form-textarea"
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-      />
-      <button className="review-form-button" disabled={isTextareaDisabled}>
-        {submitLabel}
+        <form className="ui reply form" style={styles} onSubmit={submitForm}>
+      <div className="field">
+        <input type="text" value={text} onChange={handleChange} />
+      </div>
+      <button className="ui blue labeled submit icon button" type="submit">
+        <i className="icon edit"></i>
+        Add Review
       </button>
-      {hasCancelButton && (
-        <button
-          type="button"
-          className="review-form-button review-form-cancel-button"
-          onClick={handleCancel}
-        >
-          Cancel
-        </button>
-      )}
     </form>
      );
 }
