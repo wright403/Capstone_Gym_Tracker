@@ -4,8 +4,10 @@ import App from "./App";
 import { AuthProvider } from "./context/AuthContext";
 import { BrowserRouter as Router } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBVbodocWiw5pWiEARM5aiEITUspFy_Gw&libraries=places">
-    </script>
+const google = window.google;
+ <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBVbodocWiw5pWiEARM5aiEITUspFy_Gw&libraries=places">
+    </script> 
+
 
 ReactDOM.render(
   <React.StrictMode>

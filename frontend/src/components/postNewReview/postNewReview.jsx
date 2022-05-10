@@ -1,54 +1,111 @@
 import React, { useState, useEffect } from "react";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
+import ReviewForm from "./ReviewForm";
 
-const postNewReview = (props) => {
-    const [reviewText, setReviewText] = useState("");
-    const [user, token] = useAuth();
-
-    const postreview = async (newReview) => {
-        try {
-          let result = await axios
-            .post("http://127.0.0.1:8000/api/gyms/", newReview, {
-              headers: {
-                Authorization: "Bearer " + token,
-              },
-            })
-            .then(console.log("This is coming from your then statment!"));
-          
-        } catch (error) {
-          console.log(error.message);
-        }
-      };
-    
-      function handleSubmit(event) {
-        event.preventDefault();
-        let newReview = {
-          review_id: props.review_id,
-          review: `${reviewText}`,
-          likes: 0,
-          dislikes: 0,
-        };
-        console.log(reviewText);
-        postreview(newReview);
-        console.log("HandleSubmit");
-      }
+const postNewReview = (props) => ({
+  review,
+  replies,
+  setActiveReview,
+  activeReview,
+  updateReview,
+  deleteReview,
+  addReview,
+ 
+  currentUserId,
+}) => {
+  const isEditing =
+    activeReview &&
+    activeReview.id === review.id &&
+    activeReview.type === "editing";
+  const fiveMinutes = 300000;
+  const timePassed = new Date() - new Date(review.createdAt) > fiveMinutes;
+  const canDelete =
+    currentUserId === review.userId === 0 && !timePassed;
+  
+  const canEdit = currentUserId === review.userId && !timePassed;
+  
+  const createdAt = new Date(review.createdAt).toLocaleDateString();
     
     
     
     return ( 
-    <div className="post-comment-box">
-      <form onSubmit={handleSubmit}>
-        <div>
-          <input
-            type="text"
-            placeholder="Add a review..."
-            value={reviewText}
-            onChange={(event) => setReviewText(event.target.value)}
-          />
-          <button type="submit">review</button>
+      <div key={review.id} className="review">
+      <div className="review-image-container">
+        
+      </div>
+      <div className="review-right-part">
+        <div className="review-content">
+          <div className="review-author">{review.username}</div>
+          <div>{createdAt}</div>
         </div>
-      </form>
+        {!isEditing && <div className="review-text">{review.body}</div>}
+        {isEditing && (
+          <CommentForm
+            submitLabel="Update"
+            hasCancelButton
+            initialText={review.body}
+            handleSubmit={(text) => updateReview(text, review.id)}
+            handleCancel={() => {
+              setActiveReview(null);
+            }}
+          />
+        )}
+        <div className="review-actions">
+          {canReply && (
+            <div
+              className="review-action"
+              onClick={() =>
+                setActiveReview({ id: review.id, type: "replying" })
+              }
+            >
+              Reply
+            </div>
+          )}
+          {canEdit && (
+            <div
+              className="review-action"
+              onClick={() =>
+                setActiveReview({ id: review.id, type: "editing" })
+              }
+            >
+              Edit
+            </div>
+          )}
+          {canDelete && (
+            <div
+              className="review-action"
+              onClick={() => deleteReview(review.id)}
+            >
+              Delete
+            </div>
+          )}
+        </div>
+        {isReplying && (
+          <ReviewForm
+            submitLabel="Reply"
+            handleSubmit={(text) => addReview(text, replyId)}
+          />
+        )}
+        {replies.length > 0 && (
+          <div className="replies">
+            {replies.map((reply) => (
+              <postNewReview
+                comment={reply}
+                key={reply.id}
+                setActiveReview={setActiveReview}
+                activeReview={activeReview}
+                updateReview={updateReview}
+                deleteReview={deleteReview}
+                addReview={addReview}
+                
+                replies={[]}
+                currentUserId={currentUserId}
+              />
+            ))}
+          </div>
+        )}
+      </div>
     </div>
      );
 }

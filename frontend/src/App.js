@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import axios from "axios";
 import React, { useState, useEffect } from 'react';
-import Places from "./components/Places/Places"
+// import Places from "./components/Places/Places"
 
 
 
@@ -27,6 +27,8 @@ import Navbar from "./components/NavBar/NavBar";
 import PrivateRoute from "./utils/PrivateRoute";
 import SearchBar from "./components/SearchBar/SearchBar";
 import DistanceMatrix from "./pages/DisplayReviewPage/DistanceMatrix";
+import PlaceDetails from "./pages/PlaceDetails/PlaceDetails";
+import DisplayReviewPage from "./pages/DisplayReviewPage/DisplayReviewPage";
 // import SomePlaces from "./components/SomePlaces/SomePlaces";
 
 
@@ -37,6 +39,8 @@ function App() {
   const [gymData, setgymData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [gymLocation, setGymLocation] = useState();
+  const google = window.google;
+
 
   useEffect(()=>{
     const fetchGyms = async () =>{
@@ -74,7 +78,7 @@ function App() {
       
      
       {/* <SomePlaces /> */}
-      <Places  />
+      {/* <Places  /> */}
       <Navbar   />
       
       
@@ -93,6 +97,8 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/distance" element={<DistanceMatrix />}/>
+        {/* <Route path="places" element={<PlaceDetails/>} /> */}
+        <Route path="/reviewpage" element={<DisplayReviewPage />} />
       </Routes>
       <Footer />
     </div>

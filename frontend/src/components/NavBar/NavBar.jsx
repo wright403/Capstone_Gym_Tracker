@@ -14,7 +14,9 @@ const Navbar = () => {
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
             <b>Gym Tracker!</b>
           </Link>
-          <Link to="/distance"style={{ textDecoration: "none", color: "white" }}>DistanceMatrix!</Link>
+          <Link to="/distance" style={{ textDecoration: "none", color: "white" }}><b>DistanceMatrix!</b></Link>
+          {/* <Link to="/places" style={{ textDecoration: "none", color: "white" }}>PlaceDetails!</Link> */}
+          <Link to="/reviewpage"  style={{ textDecoration: "none", color: "white" }}><b>ReviewPage!</b></Link>
         </li>
         <li>
           {user ? (
