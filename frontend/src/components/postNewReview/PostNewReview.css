@@ -1,0 +1,16 @@
+.post-new-review-box {
+    margin-left: 2rem;
+    padding: 1rem;
+  }
+  
+  .post-new-review-box button {
+    width: 40%;
+    padding: 0;
+    background-color: blue;
+    border: none;
+    color: black;
+  }
+  
+  .post-new-review-boxinput:focus {
+    outline: none;
+  }

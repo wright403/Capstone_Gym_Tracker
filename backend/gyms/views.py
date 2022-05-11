@@ -20,7 +20,7 @@ class ReviewList(APIView, AllowAny):
         return Response(serializer.data)
 
 
-class ReviewDetail(APIView, IsAuthenticated):
+class ReviewDetail(APIView, AllowAny):
 
     def post(self, request):
         serializer = ReviewSerializer(data=request.data)
@@ -38,7 +38,7 @@ class ReviewDetail(APIView, IsAuthenticated):
 
 
 
-class ReviewUpdate(APIView, IsAuthenticated):
+class ReviewUpdate(APIView, AllowAny):
      def put(self, request, review_id):
         review = Review.objects.get(id=review_id)
         serializer = ReviewSerializer(review, data=request.data)
@@ -48,7 +48,7 @@ class ReviewUpdate(APIView, IsAuthenticated):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
         
-class ReviewLike(APIView, IsAuthenticated):
+class ReviewLike(APIView, AllowAny):
         def get_object(self, review_id):
             try:
                 return Review.objects.get(id=review_id)
@@ -64,7 +64,7 @@ class ReviewLike(APIView, IsAuthenticated):
             return Response(serializer.data)
 
 
-class ReviewDislike(APIView, IsAuthenticated):
+class ReviewDislike(APIView, AllowAny):
         def get_object(self, review_id):
             try:
                 return Review.objects.get(id=review_id)

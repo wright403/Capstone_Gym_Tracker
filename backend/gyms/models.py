@@ -6,4 +6,5 @@ class Review(models.Model):
     review = models.CharField(max_length=255)
     likes = models.IntegerField()
     dislikes = models.IntegerField()
+    place_id = models.CharField(max_length=255)
     

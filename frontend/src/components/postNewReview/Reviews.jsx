@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import LikeButton from '../LikeButton/LikeButton';
-import DisLikeButton from '../DislikeButton/DislikeButton';
+import PostNewReview from './PostNewReview';
+
 import axios from 'axios';
 const Reviews = (props) => {
   const [reviews, setReviews] = useState([]);
@@ -38,7 +39,7 @@ const Reviews = (props) => {
     return ( 
       <div>
       <div className="post-review">
-        
+      <PostNewReview placeId={props.place_id} reloadReviews={makeGetRequest} />
       </div>
       {reviews &&
         reviews
@@ -47,22 +48,19 @@ const Reviews = (props) => {
           .map((review, i) => (
             <div className="review-reply-wrapper">
               <div className="review-wrapper">
-                <h4>{review.user.username} </h4>
+                
                 <p>{review.text}</p>
                 <div className="likes-dislikes-wrapper">
                   <LikeButton
                     likes={review.likes}
                     review_id={review.id}
                     reloadComments={makeGetRequest}
+                    dislikes={review.dislikes}
                     
                   />
                   
                   <p>{review.likes - review.dislikes}</p>
-                  <DisLikeButton
-                    dislikes={review.dislikes}
-                    review_id={review.id}
-                    reloadReviews={makeGetRequest}
-                  />
+                  
                 </div>
               </div>
               

@@ -84,9 +84,10 @@ function App() {
       {/* <SomePlaces /> */}
       {/* <Places  /> */}
       <Navbar   />
-      {/* <PostNewReview /> */}
-      <Reviews />
-      <ReviewForm />
+      <PostNewReview />
+      <Reviews /> 
+     <LikeButton /> 
+      
       
       
       
@@ -104,9 +105,9 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/distance" element={<DistanceMatrix />}/>
-         <Route path="places" element={<PlaceDetails/>} /> 
+         {/* <Route path="places" element={<PlaceDetails/>} />  */}
         <Route path="/reviewpage" element={<DisplayReviewPage />} />
-        <Route path ="/placesmap" element={<Places  />} />
+        <Route path ="/placesmap" element={<Places review={Reviews} newreview={ReviewForm}  />} />
       </Routes>
       <Footer />
     </div>
