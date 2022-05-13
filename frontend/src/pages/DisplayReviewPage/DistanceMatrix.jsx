@@ -157,7 +157,7 @@ const DistanceMatrix = (props) => {
 
           <ButtonGroup>
             <Button colorScheme='pink' type='submit' onClick={calculateRoute}>
-              Calculate Route
+              Calculate
             </Button>
             <IconButton
               aria-label='center back'

@@ -39,7 +39,8 @@ const Reviews = (props) => {
     return ( 
       <div>
       <div className="post-review">
-      <PostNewReview placeId={props.place_id} reloadReviews={makeGetRequest} />
+      <PostNewReview 
+      />
       </div>
       {reviews &&
         reviews
@@ -51,15 +52,16 @@ const Reviews = (props) => {
                 
                 <p>{review.text}</p>
                 <div className="likes-dislikes-wrapper">
-                  <LikeButton
+                   <LikeButton
                     likes={review.likes}
                     review_id={review.id}
                     reloadComments={makeGetRequest}
                     dislikes={review.dislikes}
                     
-                  />
+                    
+                  /> 
                   
-                  <p>{review.likes - review.dislikes}</p>
+                  {/* <p>{review.likes - review.dislikes}</p> */}
                   
                 </div>
               </div>

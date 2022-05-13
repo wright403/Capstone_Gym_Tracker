@@ -3,17 +3,20 @@ import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import ReviewForm from "./ReviewForm";
 import "./PostNewReview.css";
+import Placeinfo from "./Placeinfo";
 
 const PostNewReview = (props) => {
   const [reviewText, setReviewText] = useState("");
  
   const postReview = async (newReview) => {
     try {
+      console.log(newReview)
       let request = await axios
-        .post("http://127.0.0.1:8000/api/gyms/", newReview, {
+        .post("http://127.0.0.1:8000/api/gyms/", newReview 
           
-        })
+        )
         .then(console.log("then statement!"));
+        setReviewText(request.data)
       props.reloadReviews();
       resetReview();
     } catch (error) {
@@ -25,11 +28,13 @@ const PostNewReview = (props) => {
   function handleSubmit(event) {
     event.preventDefault();
     let newReview = {
-      review_id: props.review.id,
-      place_id: props.place_id,
-      text: `${reviewText}`,
+      
+    
+      review: `${reviewText}`,
+      
       likes: 0,
       dislikes: 0,
+      place_id: props.place_id
     };
     console.log(reviewText);
     postReview(newReview);
@@ -45,7 +50,7 @@ const PostNewReview = (props) => {
   
   
   return ( 
-    <div className="post-review-box">
+    <div className="post-comment-box">
     <form onSubmit={handleSubmit}>
       <div>
         <input

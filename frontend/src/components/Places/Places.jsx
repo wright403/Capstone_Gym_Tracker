@@ -18,21 +18,22 @@ import Reviews from "../postNewReview/Reviews";
 import PostNewReview from "../postNewReview/PostNewReview";
 
 
-export default function Places() {
+export default function Places(props) {
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: 'AIzaSyCBVbodocWiw5pWiEARM5aiEITUspFy_Gw',
     libraries: ["places"],
   });
   
 
+
   if (!isLoaded) return <div>Loading...</div>;
-  return <Map />;
+  return <Map setPlaceId={props.setPlaceId}/>;
   
 }
 
 
 
-function Map() {
+function Map({setPlaceId}) {
   const mapContainerStyle = {
     height: "100vh",
     width: "100vw",
@@ -54,7 +55,7 @@ function Map() {
     <>
     
       <div className="places-container">
-        <PlacesAutocomplete setSelected={setSelected}   />
+        <PlacesAutocomplete setPlaceId={setPlaceId} setSelected={setSelected}   />
       </div>
       
       <GoogleMap
@@ -68,6 +69,9 @@ function Map() {
       >
         {selected && <Marker position={selected} />}
       </GoogleMap>
+      <div>
+        <Reviews />
+      </div>
       
     </>
   );
@@ -101,7 +105,7 @@ function Locate({ panTo }) {
 
 
 
-const PlacesAutocomplete = ({ setSelected, panTo }) => {
+const PlacesAutocomplete = ({ setPlaceId, setSelected, panTo }) => {
   const {
     ready,
     value,
@@ -125,7 +129,11 @@ const PlacesAutocomplete = ({ setSelected, panTo }) => {
     setSelected({ lat, lng });
   };
 
-  
+  const handleChange = (e) => {
+    console.log(e)
+    setPlaceId(e.target.key)
+    setValue(e.target.value)
+  }
   
   
   
@@ -133,7 +141,7 @@ const PlacesAutocomplete = ({ setSelected, panTo }) => {
     <Combobox onSelect={handleSelect}>
       <ComboboxInput
         value={value}
-        onChange={(e) => setValue(e.target.value)}
+        onChange={(e) => handleChange(e)}
         disabled={!ready}
         className="combobox-input"
         placeholder="Search an address"

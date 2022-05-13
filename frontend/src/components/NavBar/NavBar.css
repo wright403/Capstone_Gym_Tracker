@@ -6,6 +6,9 @@ ul {
 
 li {
   font-size: 1.25rem;
+  justify-content: space-between;
+  width: 20%;
+  height: 100%;
 }
 
 .navBar {

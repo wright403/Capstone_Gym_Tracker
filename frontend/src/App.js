@@ -43,6 +43,7 @@ function App() {
   const [gymData, setgymData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [gymLocation, setGymLocation] = useState();
+  const [placeId, setPlaceId] = useState('')
   const google = window.google;
 
 
@@ -84,9 +85,8 @@ function App() {
       {/* <SomePlaces /> */}
       {/* <Places  /> */}
       <Navbar   />
-      <PostNewReview />
-      <Reviews /> 
-     <LikeButton /> 
+      {/* <PostNewReview /> */}
+       
       
       
       
@@ -107,7 +107,7 @@ function App() {
         <Route path="/distance" element={<DistanceMatrix />}/>
          {/* <Route path="places" element={<PlaceDetails/>} />  */}
         <Route path="/reviewpage" element={<DisplayReviewPage />} />
-        <Route path ="/placesmap" element={<Places review={Reviews} newreview={ReviewForm}  />} />
+        <Route path ="/placesmap" element={<Places setPlaceId={setPlaceId}   />} />
       </Routes>
       <Footer />
     </div>

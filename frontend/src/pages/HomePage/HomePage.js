@@ -27,13 +27,16 @@ const HomePage = () => {
     fetchCars();
   }, [token]);
   return (
-    <div className="container">
-      <h1></h1>
+    <div style={{
+      backgroundImage: `url(https://emilypost.com/client_media/images/blogs/everyday-gym.jpg)`
+    }}>
+      
       {cars &&
         cars.map((car) => (
           <p key={car.id}>
             {car.year} {car.make} {car.model}
           </p>
+
         ))}
     </div>
   );

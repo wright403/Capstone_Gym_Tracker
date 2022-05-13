@@ -31,10 +31,10 @@ class ReviewDetail(APIView, AllowAny):
 
 
 
-    def delete(self, request, review_id, format=None):
-        review = self.get_object(review_id)
-        review.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+    # def delete(self, request, review_id, format=None):
+    #     review = self.get_object(review_id)
+    #     review.delete()
+    #     return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 
