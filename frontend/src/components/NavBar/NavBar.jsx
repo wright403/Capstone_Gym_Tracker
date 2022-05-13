@@ -11,12 +11,18 @@ const Navbar = () => {
     <div className="navBar">
       <ul>
         <li className="brand">
-          <Link to="/" style={{ textDecoration: "none", color: "white" }}>
-            <b>Gym Tracker!</b>
+          <Link to="revenuepage" style={{ textDecoration: "none", color: "white" }}>
+            <b>Gym Tracker</b>
           </Link>
-          <Link to="/distance" style={{ textDecoration: "none", color: "white" }}><b>Distance!</b></Link>
+          </li>
+          <li>
+          <Link to="/distance" style={{ textDecoration: "none", color: "white" }}><b>Distance</b></Link>
+          </li>
            {/* <Link to="/places" style={{ textDecoration: "none", color: "white" }}>PlaceDetails!</Link>  */}
-          <Link to="/reviewpage"  style={{ textDecoration: "none", color: "white" }}><b>Chart!</b></Link>
+           <li>
+          <Link to="/reviewpage"  style={{ textDecoration: "none", color: "white" }}><b>Chart</b></Link>
+          </li>
+          <li>
           <Link to="/placesmap" style={{ textDecoration: "none", color: "white" }}><b>Places</b></Link>
         </li>
         <li>

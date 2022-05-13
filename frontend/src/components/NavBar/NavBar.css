@@ -2,13 +2,14 @@ ul {
   display: flex;
   justify-content: space-between;
   list-style-type: none;
+  padding-left: 30px;
+  padding-right: 30px;
+ 
 }
 
 li {
-  font-size: 1.25rem;
-  justify-content: space-between;
-  width: 20%;
-  height: 100%;
+  font-size: 1.7rem;
+  
 }
 
 .navBar {
@@ -34,5 +35,5 @@ li {
 
 .brand {
   cursor: pointer;
-  font-size: 2rem;
+  font-size: 1.7rem;
 }

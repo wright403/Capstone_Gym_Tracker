@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
+import { Chart } from "react-google-charts";
 
 import axios from "axios";
 
@@ -8,36 +9,42 @@ const HomePage = () => {
   // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)
   // The "token" value is the JWT token that you will send in the header of any request requiring authentication
   //TODO: Add an AddCars Page to add a car for a logged in user's garage
-  const [user, token] = useAuth();
-  const [cars, setCars] = useState([]);
+  
+  
+  const [title, setTitle] = useState({
+    title: "Highest revenue gyms",
+    vAxis: {minValue: 0},
+    colors: ['black']
 
-  useEffect(() => {
-    const fetchCars = async () => {
-      try {
-        let response = await axios.get("http://127.0.0.1:8000/api/cars/", {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        });
-        setCars(response.data);
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
-    fetchCars();
-  }, [token]);
+  })
+
+
+
+
+
+          const data = [
+            ["Element", "Revenue", "Per billions", { role: "style" }],
+            ["Lifetime Fitness", 1.9, "#b87333"], // RGB value
+            ["LA Fitness", 2.15, "silver"], // English color name
+            
+            ["24 hour Fitness", 1.47, "color: #e5e4e2"], // CSS-style declaration
+            
+          ];
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   return (
-    <div style={{
-      backgroundImage: `url(https://emilypost.com/client_media/images/blogs/everyday-gym.jpg)`
-    }}>
+    <div>
+      <Chart chartType="ColumnChart" width="100%" height="400px" data={data} options={title} />
       
-      {cars &&
-        cars.map((car) => (
-          <p key={car.id}>
-            {car.year} {car.make} {car.model}
-          </p>
-
-        ))}
     </div>
   );
 };

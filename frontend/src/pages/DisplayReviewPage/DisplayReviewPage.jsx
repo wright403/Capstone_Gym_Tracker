@@ -16,10 +16,10 @@ const DisplayReviewPage = (props) => {
     
     
               const data = [
-                ["Element", "Ratings", { role: "style" }],
-                ["Antime Fitness", 8.94, "#b87333"], // RGB value
-                ["LA Fitness", 10.49, "silver"], // English color name
-                ["Planet Fitness", 19.3, "gold"],
+                ["Element", "Ratings per 1000 reviews",  { role: "style" }],
+                ["Antime Fitness", 19.94, "#b87333"], // RGB value
+                ["LA Fitness", 23.45, "silver"], // English color name
+                ["Planet Fitness", 20.45, "gold"],
                 ["24 hour Fitness", 21.45, "color: #e5e4e2"], // CSS-style declaration
                 ["Golds Gym", 20.32, "red"],
               ];
@@ -28,6 +28,7 @@ const DisplayReviewPage = (props) => {
     
     return(
         <Chart chartType="ColumnChart" width="100%" height="400px" data={data} options={title} />
+        
 
     )
               
@@ -36,3 +37,5 @@ const DisplayReviewPage = (props) => {
 }
  
 export default DisplayReviewPage;
+
+// https://www.statista.com/topics/1141/health-and-fitness-clubs/#topicHeader__wrapper

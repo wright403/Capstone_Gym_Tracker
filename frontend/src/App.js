@@ -33,6 +33,7 @@ import Places from "./components/Places/Places";
 import PostNewReview from "./components/postNewReview/PostNewReview";
 import ReviewForm from "./components/postNewReview/ReviewForm";
 import Reviews from "./components/postNewReview/Reviews";
+import DisplayReviewStats from "./components/displayReviewStats/DisplayReviewStats";
 // import SomePlaces from "./components/SomePlaces/SomePlaces";
 
 
@@ -108,6 +109,7 @@ function App() {
          {/* <Route path="places" element={<PlaceDetails/>} />  */}
         <Route path="/reviewpage" element={<DisplayReviewPage />} />
         <Route path ="/placesmap" element={<Places setPlaceId={setPlaceId}   />} />
+        <Route path="/revenuepage" element={<DisplayReviewStats />} />
       </Routes>
       <Footer />
     </div>
